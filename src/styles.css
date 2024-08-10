@@ -1,0 +1,13 @@
+.flex-step,
+.flex-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+  font-size: 2em;
+}
+
+p {
+  font-size: 2em;
+  text-align: center;
+}
