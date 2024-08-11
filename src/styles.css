@@ -11,3 +11,24 @@ p {
   font-size: 2em;
   text-align: center;
 }
+
+.slider {
+  width: 15rem;
+}
+
+.btnReset {
+  font-size: 1.5em;
+  margin-top: 2em;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5em 1em;
+  background-color: #f44555;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.inputCount {
+  font-size: 1em;
+}

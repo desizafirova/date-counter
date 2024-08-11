@@ -16,20 +16,17 @@ function Counter() {
   const [step, setStep] = useState(1);
   const currentDate = new Date();
 
-  function handlerPlusStep() {
-    setStep((s) => s + 1);
-  }
-
-  function handlerMinusStep() {
-    setStep((s) => (s > 1 ? s - 1 : 1));
-  }
-
   function handlerPlusCount() {
     setCount((c) => c + step);
   }
 
   function handlerMinusCount() {
     setCount((c) => c - step);
+  }
+
+  function handlerReset() {
+    setCount(0);
+    setStep(1);
   }
 
   const futureDate = new Date(currentDate);
@@ -41,13 +38,24 @@ function Counter() {
   return (
     <>
       <div className="flex-step">
-        <button onClick={handlerMinusStep}>-</button>
+        <input
+          className="slider"
+          type="range"
+          min="0"
+          max="10"
+          onChange={(e) => setStep(Number(e.target.value))}
+          value={step}
+        />
         <p>Step: {step}</p>
-        <button onClick={handlerPlusStep}>+</button>
       </div>
       <div className="flex-count">
         <button onClick={handlerMinusCount}>-</button>
-        <p>Count: {count}</p>
+        <input
+          type="text"
+          value={count}
+          className="inputCount"
+          onChange={(e) => setCount(Number(e.target.value))}
+        />
         <button onClick={handlerPlusCount}>+</button>
       </div>
       {count === 0 && <p>Today is {currentDate.toDateString()}</p>}
@@ -61,6 +69,13 @@ function Counter() {
           {count * -1} days ago was {passedDate.toDateString()}
         </p>
       )}
+      {count !== 0 || step !== 1 ? (
+        <div>
+          <button className="btnReset" onClick={handlerReset}>
+            Reset
+          </button>
+        </div>
+      ) : null}
     </>
   );
 }
